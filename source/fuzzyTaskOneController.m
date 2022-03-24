@@ -17,7 +17,7 @@ if booleanAtCheckPoint == true
     checkPointCounter = checkPointCounter +1 ;
     voltages = [0 0];
 elseif booleanAtCheckPoint == false
-    fuzzyController = readfis('thirdMethod_two.fis');
+    fuzzyController = readfis('taskTwoController.fis');
     inputs = [ error sensorOut(:,2) sensorOut(:,1)];
     voltages = evalfis(fuzzyController,inputs) ;
 end
