@@ -1,0 +1,81 @@
+[System]
+Name='fuzzyControlTaskTwo'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=2
+NumRules=27
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='bisector'
+
+[Input1]
+Name='error'
+Range=[-3.14159265358979 3.14159265358979]
+NumMFs=3
+MF1='error_good':'trimf',[-0.2 0 0.2]
+MF2='ac_of_target':'trapmf',[-3.65 -3.12 -0.108058201058201 0.0166]
+MF3='cw_of_target':'trapmf',[-0.0166 0.1579 4.17 4.17]
+
+[Input2]
+Name='right_sensor'
+Range=[0 1]
+NumMFs=3
+MF1='too_close':'trapmf',[-0.375 -0.0417 0.146825396825397 0.3]
+MF2='close':'trapmf',[0.197 0.229 0.398148148148148 0.697]
+MF3='far':'trapmf',[0.392857142857143 0.512 1.04 1.37]
+
+[Input3]
+Name='left_sensor'
+Range=[0 1]
+NumMFs=3
+MF1='too_close':'trapmf',[-0.375 -0.0417 0.1468 0.3]
+MF2='close':'trapmf',[0.197 0.229 0.3981 0.697]
+MF3='far':'trapmf',[0.393 0.512 1.04 1.37]
+
+[Output1]
+Name='motor_volatge_right'
+Range=[-15 15]
+NumMFs=3
+MF1='reverse':'trapmf',[-26.2 -16.2 -0.912698412698415 0]
+MF2='off':'trimf',[-1.25 0 1.25]
+MF3='forward':'trapmf',[0.159 1.07142857142857 16.4 26.4]
+
+[Output2]
+Name='motor_voltage_left'
+Range=[-15 15]
+NumMFs=3
+MF1='reverse':'trapmf',[-26.2 -16.2 -0.833333333333332 0]
+MF2='off':'trimf',[-2.5 0 2.5]
+MF3='forward':'trapmf',[0 1.15079365079365 16.2 26.2]
+
+[Rules]
+2 1 1, 1 1 (1) : 1
+2 1 2, 3 1 (1) : 1
+2 1 3, 3 1 (1) : 1
+2 2 1, 1 3 (1) : 1
+2 2 2, 1 1 (1) : 1
+2 2 3, 3 1 (1) : 1
+2 3 1, 1 3 (1) : 1
+2 3 2, 1 3 (1) : 1
+2 3 3, 1 3 (1) : 1
+3 1 1, 1 1 (1) : 1
+3 1 2, 3 1 (1) : 1
+3 1 3, 3 1 (1) : 1
+3 2 1, 1 3 (1) : 1
+3 2 2, 1 1 (1) : 1
+3 2 3, 2 3 (1) : 1
+3 3 1, 1 3 (1) : 1
+3 3 2, 2 3 (1) : 1
+3 3 3, 3 1 (1) : 1
+1 1 1, 1 1 (1) : 1
+1 1 2, 3 1 (1) : 1
+1 1 3, 3 1 (1) : 1
+1 2 2, 3 1 (1) : 1
+1 2 1, 3 1 (1) : 1
+1 2 3, 3 1 (1) : 1
+1 3 1, 1 3 (1) : 1
+1 3 2, 2 3 (1) : 1
+1 3 3, 3 3 (1) : 1
